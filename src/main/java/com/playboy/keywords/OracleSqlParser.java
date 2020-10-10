@@ -1,7 +1,6 @@
 package com.playboy.keywords;
 
-import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.date.TimeInterval;
+
 import com.alibaba.druid.sql.SQLUtils;
 import com.alibaba.druid.sql.ast.SQLExpr;
 import com.alibaba.druid.sql.ast.SQLOver;
@@ -18,12 +17,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-/**
- * @author playboy
- * @create 2020-02-21 8:23 下午
- * @description oracle数据解析
- * @serviceLogic
- **/
 public class OracleSqlParser {
     private Logger log = LoggerFactory.getLogger(OracleSqlParser.class);
 
@@ -35,7 +28,6 @@ public class OracleSqlParser {
 
 
     public String dealSql(String sql) {
-        TimeInterval timer = DateUtil.timer();
 
         String oracle = JdbcConstants.ORACLE;
         //1.解析
@@ -60,11 +52,7 @@ public class OracleSqlParser {
         return s;
     }
 
-    /**
-     * 处理insert语句
-     *
-     * @param insert
-     */
+
     public void dealInsert(SQLInsertStatement insert) {
         if (ObjectUtils.isEmpty(insert)) {
             return;
@@ -83,11 +71,6 @@ public class OracleSqlParser {
         dealSelect(query);
     }
 
-    /**
-     * 处理update语句
-     *
-     * @param update
-     */
     public void dealUpdate(SQLUpdateStatement update) {
         if (ObjectUtils.isEmpty(update)) {
             return;
@@ -107,11 +90,7 @@ public class OracleSqlParser {
         dealExpr(where);
     }
 
-    /**
-     * 处理select语句
-     *
-     * @param select
-     */
+
     public void dealSelect(SQLSelect select) {
         if (ObjectUtils.isEmpty(select)) {
             return;
@@ -163,11 +142,6 @@ public class OracleSqlParser {
         }
     }
 
-    /**
-     * 处理各种表达式
-     *
-     * @param expr
-     */
     public void dealExpr(SQLExpr expr) {
         if (ObjectUtils.isEmpty(expr)) {
             return;

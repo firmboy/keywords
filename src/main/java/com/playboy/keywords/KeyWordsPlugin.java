@@ -15,12 +15,6 @@ import org.slf4j.LoggerFactory;
 import java.lang.reflect.Field;
 import java.util.*;
 
-/**
- * @author playboy
- * @create 2020-02-18 8:19 下午
- * @description 过滤关键字的mybatis过滤器
- * @serviceLogic
- **/
 @Intercepts(
         {
                 @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}),
